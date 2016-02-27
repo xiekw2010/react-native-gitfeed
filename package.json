@@ -1,0 +1,17 @@
+{
+  "name": "RN_CNNode",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "clean:babelrc": "find ./node_modules -name react-packager -prune -o -name '.babelrc' -print | xargs rm -f",
+    "postinstall": "npm run clean:babelrc"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "events": "~1.1.0",
+    "react-native": "0.19.0",
+    "react-native-code-push": "~1.7.3-beta",
+    "react-native-scrollable-tab-view": "~0.3.4",
+    "react-native-vector-icons": "^1.1.1"
+  }
+}

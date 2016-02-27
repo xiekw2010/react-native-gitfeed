@@ -1,0 +1,10 @@
+PODS:
+  - DXPopover (0.1.1)
+
+DEPENDENCIES:
+  - DXPopover
+
+SPEC CHECKSUMS:
+  DXPopover: 13e6bbd1a0da4e62b2190de51f43a94850769e0f
+
+COCOAPODS: 0.35.0
