@@ -1,5 +1,8 @@
 # Github Feed
 
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+
+
 Yet another Github client written with react-native.
 
 ![](http://ww2.sinaimg.cn/large/84178573gw1f1387u08s5j20x60bsdiz.jpg)
@@ -12,7 +15,7 @@ Yet another Github client written with react-native.
 3. Explore trending repos daily, weekly, monthly.
 4. Check who's famous in some filed all of the world.
 
-## online apps
+## Online apps
 
 iOS:
 
@@ -24,7 +27,7 @@ android:
 
 ## How to build this
 
-###register(If you don't need login, this is optional)
+###Register(If you don't need login, this is optional)
 
 1. You must have a github client key and secret, check [this](https://github.com/settings/applications/new) out!
 
@@ -46,7 +49,7 @@ open the project in ios dir `cd ios`
 
 `pod install`
 
-### release模式
+### Release mode
 
 1. edit xcode project `RN_CNNode`'s scheme to `release` mode
 
@@ -60,20 +63,27 @@ open the project in ios dir `cd ios`
 
 3. xcode run!
 
-### debug模式
+### Debug mode
 
 Edit xcode project `RN_CNNode` edit scheme to `debug` mode
 
 Xcode run!
 
-##android
+##Android
 
-### release模式
-Open android studio，change the `Build Variants` to `release`
+Use Android studio to open the `android` dir, the studio will take a lot time to build the project(just be patient).
 
+### Release mode
+Open Android studio，change the `Build Variants` to `release`
+
+#### Device
 `sh ./build_android.sh`
 
-### debug模式
+#### Emulator
+
+Just run the project
+
+### Debug mode
 
 `react-native run-android`
 
@@ -100,9 +110,9 @@ Publish update
 
 	code-push release GitFeed-iOS ~/Desktop/release 1.0.0 -d Production
 
-##Let's talk about it(So far Chinese supported)  
+##Let's talk about it(So far only Chinese supported)  
 
 [一次RN跨平台开发之旅](http://xiekw2010.github.io/2016/02/11/rngitfeed)
 
 ###License
-Check out the GPL license file.
+GPL. Copyright (c) [David Tse](https://github.com/xiekw2010).
