@@ -23,13 +23,13 @@ iOS:
 
 android:
 
-![](http://img3.tbcdn.cn/L1/461/1/d395f6d2148b392550b971ce7f50672b04fd1716.png)
+![2016_02_29_2007551457](http://img4.tbcdn.cn/L1/461/1/c789a340011d4c427ab6660148753faa0b075501.png)
 
 ## How to build this
 
-###Register(If you don't need login, this is optional)
+###Register(If you don't need login, skip this step)
 
-1. You must have a github client key and secret, check [this](https://github.com/settings/applications/new) out!
+1. You a github client key and secret, check [this](https://github.com/settings/applications/new) out!
 
 2. change `config.js`
 
@@ -74,6 +74,9 @@ Xcode run!
 Use Android studio to open the `android` dir, the studio will take a lot time to build the project(just be patient).
 
 ### Release mode
+
+Connect your devices with USB.
+
 Open Android studio，change the `Build Variants` to `release`
 
 #### Device
@@ -89,7 +92,7 @@ Just run the project
 
 Emulator run some device.
 
-## [Code-push](http://microsoft.github.io/code-push/) practice (optional knowledge)
+## [Code-push](http://microsoft.github.io/code-push/) practice (This step is optional)
 
 1. mkdir ~/Desktop/release
 2. bundle the js resources
