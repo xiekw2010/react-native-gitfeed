@@ -24,7 +24,7 @@ const CONTAINERREF = 'container';
 const FloorListView = React.createClass({
   propTypes: {
     toggleOn: React.PropTypes.bool,
-    languageList: React.PropTypes.string,
+    languageList: React.PropTypes.array,
     onSelectLanguage: React.PropTypes.func,
     currentLanguage: React.PropTypes.string,
   },
