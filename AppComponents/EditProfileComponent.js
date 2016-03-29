@@ -284,9 +284,10 @@ const EditProfileComponent = React.createClass({
     return configs.map(this.renderInputField);
   },
 
-  renderInputField(config){
+  renderInputField(config, index){
     return (
       <InputField
+        key={'config_' + index}
         ref={config.id}
         config={config}
         diffCallback={this.diffCallback}
@@ -408,7 +409,6 @@ const InputField = React.createClass({
       case 'email': {
         moreEmailBtn = (
           <TouchableHighlight
-            underlayColor={'clear'}
             onPress={()=>{
               this.switchEmailList();
             }}>
