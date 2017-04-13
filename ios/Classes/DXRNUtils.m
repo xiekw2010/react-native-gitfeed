@@ -7,6 +7,7 @@
 //
 
 #import "DXRNUtils.h"
+#import "MobClick.h"
 
 static NSString * const kAppId = @"1079873993";
 
@@ -26,6 +27,7 @@ RCT_EXPORT_METHOD(clearCookies:(RCTResponseSenderBlock)callback) {
 }
 
 RCT_EXPORT_METHOD(trackClick:(nonnull NSString *)eventName attributes:(NSDictionary *)atr) {
+  [MobClick event:eventName attributes:atr];
 }
 
 RCT_EXPORT_METHOD(appInfo:(RCTResponseSenderBlock)callback) {

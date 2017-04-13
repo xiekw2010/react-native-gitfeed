@@ -1,41 +1,18 @@
 # Github Feed
-
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-
-
-Yet another Github client written with react-native.
-
-![](http://ww2.sinaimg.cn/large/84178573gw1f1387u08s5j20x60bsdiz.jpg)
+---
+Yet another Github client written in react-native.
 
 ## Includes ?
+---
 
-1. Feeds like web github home.
-2. Search users or repos.
-3. Star, watch repos, follow guys.
-3. Explore trending repos daily, weekly, monthly.
-4. Check who's famous in some filed all of the world.
+1. Feed like web github home.
+2. Watched repos' notification.
+3. Trends.
+4. Personal.
 
-## Online apps
+## How to run iOS
 
-iOS:
-
-![](http://img3.tbcdn.cn/L1/461/1/b77fe7c74ef98edde9ff366416fb5597bd8eb88c.png)
-
-android:
-
-![2016_02_29_2007551457](http://img4.tbcdn.cn/L1/461/1/c789a340011d4c427ab6660148753faa0b075501.png)
-
-## How to build this
-
-###Register(If you don't need login, skip this step)
-
-1. You a github client key and secret, check [this](https://github.com/settings/applications/new) out!
-
-2. change `config.js`
-
-Filling your github client and key
-
-###Install JS env
+`rm -rf node_modules`
 
 `npm install`
 
@@ -43,79 +20,53 @@ if error about 'EACCS' try
 
 `sudo chown -R $(whoami) "$HOME/.npm"`
 
-##iOS
+run the project in ios dir
 
-open the project in ios dir `cd ios`
+(***注意*** 如果要contribute cocoapods 建议使用0.35.0版本！)
+
+in iOS dir
 
 `pod install`
 
-### Release mode
+###接入流程
 
-1. edit xcode project `RN_CNNode`'s scheme to `release` mode
-
-![screenshot](http://img3.tbcdn.cn/L1/461/1/bc8dcf0ba852141503e99a408d08ab44e33d9e41.png)
-
-2. bundle the JS resources, in project root dir
-
-  ```sh
-  react-native bundle --platform ios --entry-file index.ios.js --bundle-output ./release/main.jsbundle --assets-dest ./release --dev false
-  ```
-
-3. xcode run!
-
-### Debug mode
-
-Edit xcode project `RN_CNNode` edit scheme to `debug` mode
-
-Xcode run!
-
-##Android
-
-Use Android studio to open the `android` dir, the studio will take a lot time to build the project(just be patient).
-
-### Release mode
-
-Connect your devices with USB.
-
-Open Android studio，change the `Build Variants` to `release`
-
-#### Device
-`sh ./build_android.sh`
-
-#### Emulator
-
-Just run the project
-
-### Debug mode
-
-`react-native run-android`
-
-Emulator run some device.
-
-## [Code-push](http://microsoft.github.io/code-push/) practice (This step is optional)
-
-1. mkdir ~/Desktop/release
-2. bundle the js resources
+1. 在index.ios.js(index.android.js)里写入Production的 deploymentKey，通常在componentDidMount里写入如下：
 
 ```js
-// including image resources
-react-native bundle --platform ios --entry-file index.ios.js --bundle-output ~/Desktop/release/main.jsbundle --assets-dest ~/Desktop/release --dev false
+const codePush = require('react-native-code-push');
 
-// not including image resources
-react-native bundle --platform ios --entry-file index.ios.js --bundle-output ~/Desktop/release/main.jsbundle --dev false
+codePush.sync({
+  updateDialog: true,
+  installMode: codePush.InstallMode.IMMEDIATE,
+  deploymentKey: dpkey,
+});
 ```
+2. 修改xcode的edit schema 使得build app是 release模式的，在appDelegate里写入：
+```js
+NSURL *jsCodeLocation;
 
-Check app status
+#ifdef DEBUG
+jsCodeLocation = [NSURL URLWithString:@"http://30.10.111.158:8081/index.ios.bundle?platform=ios&dev=true"];
 
-	code-push deployment ls GitFeed-iOS
+jsCodeLocation = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"]];
 
-Publish update
+#else
+jsCodeLocation = [CodePush bundleURL];
+#endif
+```
+3. 随意乱改js文件
+4. 打包 所有js文件在一个其他位置，可以使用`打包需要更新的资源`
+5. 用code-push发布。
 
-	code-push release GitFeed-iOS ~/Desktop/release 1.0.0 -d Production
+## CodePush
 
-##Let's talk about it(So far only Chinese supported)  
+注意在打包的目标地址先建立对应的目录比如这里的~/Desktop/release，要现在Desktop建立好。
 
-[一次RN跨平台开发之旅](http://xiekw2010.github.io/2016/02/11/rngitfeed)
+打包到桌面本地资源(包括图片)：
+react-native bundle --platform ios --entry-file index.ios.js --bundle-output ./ios/main.jsbundle --dev false
 
-###License
-GPL. Copyright (c) [David Tse](https://github.com/xiekw2010).
+查看更新状态：
+code-push deployment ls GitFeed-iOS
+
+发布更新：
+code-push release GitFeed-iOS ~/Desktop/release 1.0.0 -d Production

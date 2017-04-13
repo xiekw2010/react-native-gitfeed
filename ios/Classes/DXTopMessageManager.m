@@ -71,7 +71,6 @@ RCT_EXPORT_METHOD(showTopMessage:(nonnull NSNumber *)reactTag message:(nonnull N
   
   id font = jsConfig[@"font"];
   if (font) {
-    mdic[kDXTopBarTextFont] = [RCTConvert UIFont:font];
   }
   
   id offset = jsConfig[@"offset"];

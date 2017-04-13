@@ -1,10 +1,10 @@
 PODS:
-  - DXPopover (0.1.1)
+  - UMengAnalytics-NO-IDFA (4.1.5)
 
 DEPENDENCIES:
-  - DXPopover
+  - UMengAnalytics-NO-IDFA
 
 SPEC CHECKSUMS:
-  DXPopover: 13e6bbd1a0da4e62b2190de51f43a94850769e0f
+  UMengAnalytics-NO-IDFA: f1b08b540eba6ebad044a574cae6d988cf40cfda
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0

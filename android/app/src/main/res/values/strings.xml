@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">GitFeed</string>
+
+
+
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"></string>
+    <string name="app_name">gitfeed</string>
 </resources>

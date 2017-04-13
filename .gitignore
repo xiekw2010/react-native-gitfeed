@@ -108,3 +108,13 @@ android/build
 android/*/build
 local.properties
 *.keystore
+
+
+# BUCK
+buck-out/
+\.buckd/
+android/app/libs
+
+# iOS
+ios/main.jsbundle
+ios/main.jsbundle.meta

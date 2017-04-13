@@ -1,3 +1,1 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
-pod 'DXPopover'
+pod 'UMengAnalytics-NO-IDFA'
